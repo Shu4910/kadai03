@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>myMemoPad</title>
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+</head>
+<body>
+<header>
+<h1>情報を記入してください</h1>
+</header>
+<main>
+    <!-- name -->
+    <div class="center">   
+      <div class="centerkey">    
+        <p id="key">名前</p>
+      
+        <!--       
+    <input type="text" id="key" value="名前"> -->
+    </div>
+    <textarea id="memo"></textarea>
+    </div>
+
+    <!-- mail -->
+    <div class="center">
+      <div class="centerkey">    
+    <input type="text" id="key2" value="メールアドレス">
+    </div>
+    <textarea id="memo2"></textarea>
+    </div>
+
+    <!-- tel -->
+    <!-- <div class="center">
+      <div class="centerkey">    
+    <input type="text" id="key" value="電話番号">
+    </div>
+    <textarea id="memo"></textarea>
+    </div> -->
+    
+    <!-- 生年月日
+    <div class="center">
+      <div class="centerkey">
+        <h2 class="birth-font">生年月日を入力してください</h2>    
+    <input type="date" id="key2" value="2018-07-22">
+    </div> -->
+
+
+       <!-- 障害種別 -->
+       <!-- <div class="center">
+      <div class="centerkey">          
+      <input type="radio" name="q1" value="身体"> 身体
+      <input type="radio" name="q1" value="精神"> 精神
+      <input type="radio" name="q1" value="精神"> 発達
+      <input type="radio" name="q1" value="精神"> 知的
+      </div>
+      </div> -->
+
+  
+<div class="bottom-button">      
+    <ul>
+        <li id="save">Save</li>
+        <li id="clear">Clear</li>
+        <li id="clear-name">Delete name</li>
+        <li id="clear-mail">Delete mail</li>
+
+    </ul>
+  </div>
+    
+</main>
+<table id="list">
+<!-- ここに追加データが挿入される -->
+</table>
+<script>
+
+
+  // 1.Save クリックイベント
+  $("#save").on("click", function () {
+      //入力された文字を取得したいと思います🤗
+      const key = $("#key").text();
+      // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
+      console.log(key, 'keyの中身')
+
+      // textareaの入力箇所も取得しましょう🤗
+      const value = $("#memo").val();
+      console.log(value, 'valueの中身')
+
+      // ローカルストレージに保存する記述をします🤗
+      localStorage.setItem(key, value)
+
+      // 画面上に表示してみましょう！
+
+      const html = `
+        <tr>
+          <th>${key}</th>
+          <td>${value}</td>
+        </tr>
+      `
+      $("#list").append(html);
+
+      $("#memo").val("");
+
+    })
+
+    $("#save").on("click", function () {
+      //入力された文字を取得したいと思います🤗
+      const key = $("#key2").val();
+      // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
+      console.log(key, 'keyの中身')
+
+      // textareaの入力箇所も取得しましょう🤗
+      const value = $("#memo2").val();
+      console.log(value, 'valueの中身')
+
+      // ローカルストレージに保存する記述をします🤗
+      localStorage.setItem(key, value)
+
+      // 画面上に表示してみましょう！
+
+      const html = `
+        <tr>
+          <th>${key}</th>
+          <td>${value}</td>
+        </tr>
+      `
+      $("#list").append(html);
+      $("#memo").val("");
+
+    })
+
+
+  // //  1.Save クリックイベント
+  // $("#save").on("click", function () {
+  //     //入力された文字を取得したいと思います🤗
+  //     const key = $("#key1").val();
+  //     // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
+  //     console.log(key, 'keyの中身')
+
+  //     // textareaの入力箇所も取得しましょう🤗
+  //     const value = $("#memo1").val();
+  //     console.log(value, 'valueの中身')
+
+  //     // ローカルストレージに保存する記述をします🤗
+  //     localStorage.setItem(key, value)
+
+  //     // 画面上に表示してみましょう！
+
+  //     const html = `
+  //       <tr>
+  //         <th>${key}</th>
+  //         <td>${value}</td>
+  //       </tr>
+  //     `
+  //     $("#list").append(html);
+
+  //     $("#memo").val("");
+
+  //   })
+
+
+
+    
+//2.clear クリックイベント
+    //2.clear クリックイベント
+    $("#clear").on('click', function () {
+      localStorage.clear();
+
+      $("#list").empty();
+      $("#memo").val("");
+      $("#memo2").val("");
+    })  
+
+    //     //2.clear クリックイベント
+        $("#clear-name").on('click', function () {
+          localStorage.removeItem("名前");  
+          location.reload();
+      $("#memo").val("");
+      $("#memo2").val("");
+    })  
+
+    //     //2.clear クリックイベント
+    $("#clear-mail").on('click', function () {
+          localStorage.removeItem("メールアドレス");  
+          location.reload();
+      $("#memo").val("");
+      $("#memo2").val("");
+      
+    })  
+
+
+
+
+
+
+    
+
+    //3.ページ読み込み：保存データ取得表示
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      const value = localStorage.getItem(key);
+    
+      const html = `
+      <tr>
+        <th>${key}</th>
+        <td>${value}</td>
+      </tr>
+    `
+      $("#list").append(html)
+    }
+
+
+</script>
+<footer><small>G's</small></footer>
+</body>
+</html>
