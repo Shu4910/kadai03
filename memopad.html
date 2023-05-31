@@ -14,12 +14,12 @@
     <!-- name -->
     <div class="center">   
       <div class="centerkey">    
-        <p id="key">名前</p>
+        <p id="key1">名前</p>
       
         <!--       
     <input type="text" id="key" value="名前"> -->
     </div>
-    <textarea id="memo"></textarea>
+    <textarea id="memo1"></textarea>
     </div>
 
     <!-- mail -->
@@ -34,18 +34,37 @@
     <!-- 生年月日 -->
     <div class="center">
       <div class="centerkey-birth">
-        <p id="key3">生年月日</h2>    
+        <p id="key3">生年月日</p>    
     </div>
     <input type="date" id="memo3" value="1992-09-10">
   </div>
 
+
+       <!-- 障害種別 -->
+       <div class="center">
+      <div class="centerkey">          
+        <p id="key4">障害種別</p>    
+      </div>
+      <div class="radio-ans">
+      <input type="radio" id="memo4" name="c1" value="身体"> 身体
+      <input type="radio" id="memo4" name="c1" value="精神"> 精神
+      <input type="radio" id="memo4" name="c1" value="発達"> 発達
+      <input type="radio" id="memo4" name="c1" value="知的"> 知的
+      <input type="radio" id="memo4" name="c1" value="その他" checked> その他
+      </div>
+      </div>
+  
 <div class="bottom-button">      
     <ul>
+
+        <li id="save">All Save</li>
         <li id="name-save">Name Save</li>
-        <li id="clear-name">Name Delete</li>
+        <!-- <li id="clear-name">Name Delete</li> -->
         <li id="mail-save">Mail Save</li>
-        <li id="clear-mail">Mail Delete</li>
+        <!-- <li id="clear-mail">Mail Delete</li> -->
         <li id="birth-save">Birth Save</li>
+        <!-- <li id="clear-birth">Birth Delete</li> -->
+        <li id="handi-save">Handi Save</li>
         <li id="clear">All Clear</li>
 
     </ul>
@@ -60,28 +79,73 @@
 <script>
 
 
-  // 1.名前Save クリックイベント
-  $("#name-save").on("click", function () {
-      //入力された文字を取得したいと思います🤗
-      const key = $("#key").text();
-      // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
-      // textareaの入力箇所も取得しましょう🤗
+ // 1.ALLSave クリックイベント
+ $("#save").on("click", function () {
 
-      const value = $("#memo").val();
-      if(value == ""){
-        alert("なにか入力してください");
-      }else{
+  for (let i = 1; i < 4; i++) {
+      //入力された文字を取得したいと思います🤗
+      const key = $("#key"+i).text();
+      console.log(key, 'keyの中身');
+      // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
+      const value = $("#memo"+i).val();
+      console.log(value, 'valueの中身');
       // ローカルストレージに保存する記述をします🤗
+      
       localStorage.setItem(key, value);
+    }
+
+    const key = $("#key4").text();
+      // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
+      console.log(key4, 'keyの中身')
+      // textareaの入力箇所も取得しましょう🤗
+      const value = $('input:radio[name="c1"]:checked').val();
+
+      // ローカルストレージに保存する記述をします🤗
+
+      localStorage.setItem(key, value);
+      
+      location.reload();
+
       const html = `
         <tr>
           <th>${key}</th>
           <td>${value}</td>
         </tr>
       `
-      $("#list").append(html);
+      
+      $("#list").replaceWith(html);
       $("#memo").val("");
-      }
+      // }
+    })
+
+
+
+
+
+  // 1.名前Save クリックイベント
+  $("#name-save").on("click", function () {
+      //入力された文字を取得したいと思います🤗
+      const key = $("#key1").text();
+      // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
+      // textareaの入力箇所も取得しましょう🤗
+
+      const value = $("#memo1").val();
+      // if(value == ""){
+      //   alert("なにか入力してください");
+      // }else{
+      // ローカルストレージに保存する記述をします🤗
+      localStorage.setItem(key, value);
+
+      location.reload();
+      const html = `
+        <tr>
+          <th>${key}</th>
+          <td>${value}</td>
+        </tr>
+      `
+      $("#list").replaceWith(html);
+      $("#memo").val("");
+      // }
     })
 
 
@@ -95,20 +159,21 @@
       // textareaの入力箇所も取得しましょう🤗
       const value = $("#memo2").val();
 
-      if(value == ""){
-        alert("なにか入力してください");
-      }else{
+      // if(value == ""){
+      //   alert("なにか入力してください");
+      // }else{
       // ローカルストレージに保存する記述をします🤗
       localStorage.setItem(key, value);
+      location.reload();
+
       const html = `
         <tr>
           <th>${key}</th>
           <td>${value}</td>
         </tr>
       `
-      $("#list").append(html);
-      $("#memo").val("");
-      }
+      $("#list").replaceWith(html);
+      // }
     })
 
     //  // 1.生年月日Save クリックイベント
@@ -116,7 +181,7 @@
       //入力された文字を取得したいと思います🤗
       const key = $("#key3").text();
       // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
-      console.log(key, 'keyの中身')
+      console.log(key3, 'keyの中身')
 
       // textareaの入力箇所も取得しましょう🤗
       const value = $("#memo3").val();
@@ -126,22 +191,66 @@
       }else{
       // ローカルストレージに保存する記述をします🤗
       localStorage.setItem(key, value);
+      location.reload();
+      
       const html = `
         <tr>
           <th>${key}</th>
           <td>${value}</td>
         </tr>
       `
-      $("#list").append(html);
+
+      $("#list").replaceWith(html);
       $("#memo").val("");
       }
     })
     
+        //  // 1.障害Save クリックイベント
+        $("#handi-save").on("click", function () {
+      //入力された文字を取得したいと思います🤗
+        
+      const key = $("#key4").text();
+      // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
+      console.log(key4, 'keyの中身')
+
+      // textareaの入力箇所も取得しましょう🤗
+
+      const value = $('input:radio[name="c1"]:checked').val();
+
+      if(value == ""){
+        alert("なにか入力してください");
+      }else{
+      // ローカルストレージに保存する記述をします🤗
+      localStorage.setItem(key, value);
+      location.reload();
+      
+      const html = `
+        <tr>
+          <th>${key}</th>
+          <td>${value}</td>
+        </tr>
+      `
+
+      $("#list").replaceWith(html);
+      $("#memo").val("");
+      }
+    })
+
+
+
+
+
+
+
+
+
+
 
 
     //2.clear クリックイベント
     $("#clear").on('click', function () {
       localStorage.clear();
+      location.reload();
       $("#list").empty();
       $("#memo").val("");
       $("#memo2").val("");
@@ -164,7 +273,7 @@
     })  
 
         //     //2.生年月日clear クリックイベント
-        $("#birth-clear").on('click', function () {
+        $("#clear-birth").on('click', function () {
           localStorage.removeItem("生年月日");  
           location.reload();
       $("#memo").val("");
@@ -177,30 +286,18 @@
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       const value = localStorage.getItem(key);
-    
       const html = `
       <tr>
         <th>${key}</th>
         <td>${value}</td>
       </tr>
-    `
-      $("#list").append(html)
-    }
+    // `
+      $("#list").append(html);
+          }
 
 
 </script>
-<footer><small>G's</small></footer>
+<footer><small>BizDiverse</small></footer>
 </body>
 </html>
 
-
-
-       <!-- 障害種別 -->
-       <!-- <div class="center">
-      <div class="centerkey">          
-      <input type="radio" name="q1" value="身体"> 身体
-      <input type="radio" name="q1" value="精神"> 精神
-      <input type="radio" name="q1" value="精神"> 発達
-      <input type="radio" name="q1" value="精神"> 知的
-      </div>
-      </div> -->

@@ -47,6 +47,9 @@ li{
     display:table-cell;  /* 定義 */
     cursor: pointer;
     color:#0d7dfd;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    
 }
 li:hover{
     background: #0d7dfd;
@@ -60,7 +63,7 @@ textarea{
   box-shadow: 3px 3px 3px 3px #555;
   background-color:rgb(241, 239, 239);
 }
-#key{
+#key1{
     margin:10px 3%;
     width:100px;
     height: 25px;
@@ -87,6 +90,15 @@ textarea{
     box-shadow: 3px 3px 3px 3px #555;
 }
 
+#key4{
+    margin:10px 3%;
+    width: 100px;
+    height: 25px;
+    font-size:80%;
+    background-color: #e1efff;
+    box-shadow: 3px 3px 3px 3px #555;
+}
+
 
 #memo3{
     margin:10px 3%;
@@ -94,9 +106,9 @@ textarea{
 
 
 table{
-    margin: 20px 3%;
+    margin: 20px 30%;
     border:1px solid #8dc3f5;
-    width:96%;
+    width:50%;
     
 }
 th{
@@ -125,8 +137,8 @@ td{
 
 
 .bottom-button{
-    padding-top: 10%;
-
+    padding-top: 1%;
+    padding-bottom: 1%;
     padding-left: 30%;
     width: 50%;
     display: flex;
@@ -151,4 +163,9 @@ td{
 .center-mail{
     display: flex;
     width: 1000px;
+}
+
+.radio-ans{
+    padding-top: 1%;
+    padding-left: 3%;
 }
