@@ -24,72 +24,55 @@
 
     <!-- mail -->
     <div class="center">
-      <div class="centerkey">    
-    <input type="text" id="key2" value="メールアドレス">
+      <div class="centerkey">  
+        <p id="key2">メールアドレス</p>
+    <!-- <input type="email" id="key2" value="メールアドレス"> -->
     </div>
     <textarea id="memo2"></textarea>
     </div>
-
-    <!-- tel -->
-    <!-- <div class="center">
-      <div class="centerkey">    
-    <input type="text" id="key" value="電話番号">
-    </div>
-    <textarea id="memo"></textarea>
-    </div> -->
     
-    <!-- 生年月日
+    <!-- 生年月日 -->
     <div class="center">
-      <div class="centerkey">
-        <h2 class="birth-font">生年月日を入力してください</h2>    
-    <input type="date" id="key2" value="2018-07-22">
-    </div> -->
+      <div class="centerkey-birth">
+        <p id="key3">生年月日</h2>    
+    </div>
+    <input type="date" id="memo3" value="1992-09-10">
+  </div>
 
-
-       <!-- 障害種別 -->
-       <!-- <div class="center">
-      <div class="centerkey">          
-      <input type="radio" name="q1" value="身体"> 身体
-      <input type="radio" name="q1" value="精神"> 精神
-      <input type="radio" name="q1" value="精神"> 発達
-      <input type="radio" name="q1" value="精神"> 知的
-      </div>
-      </div> -->
-
-  
 <div class="bottom-button">      
     <ul>
-        <li id="save">Save</li>
-        <li id="clear">Clear</li>
-        <li id="clear-name">Delete name</li>
-        <li id="clear-mail">Delete mail</li>
+        <li id="name-save">Name Save</li>
+        <li id="clear-name">Name Delete</li>
+        <li id="mail-save">Mail Save</li>
+        <li id="clear-mail">Mail Delete</li>
+        <li id="birth-save">Birth Save</li>
+        <li id="clear">All Clear</li>
 
     </ul>
   </div>
     
 </main>
+<h1>現在、入力されているデータ</h1>
+
 <table id="list">
 <!-- ここに追加データが挿入される -->
 </table>
 <script>
 
 
-  // 1.Save クリックイベント
-  $("#save").on("click", function () {
+  // 1.名前Save クリックイベント
+  $("#name-save").on("click", function () {
       //入力された文字を取得したいと思います🤗
       const key = $("#key").text();
       // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
-      console.log(key, 'keyの中身')
-
       // textareaの入力箇所も取得しましょう🤗
+
       const value = $("#memo").val();
-      console.log(value, 'valueの中身')
-
+      if(value == ""){
+        alert("なにか入力してください");
+      }else{
       // ローカルストレージに保存する記述をします🤗
-      localStorage.setItem(key, value)
-
-      // 画面上に表示してみましょう！
-
+      localStorage.setItem(key, value);
       const html = `
         <tr>
           <th>${key}</th>
@@ -97,26 +80,26 @@
         </tr>
       `
       $("#list").append(html);
-
       $("#memo").val("");
-
+      }
     })
 
-    $("#save").on("click", function () {
+
+    // 1.メールSave クリックイベント
+    $("#mail-save").on("click", function () {
       //入力された文字を取得したいと思います🤗
-      const key = $("#key2").val();
+      const key = $("#key2").text();
       // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
       console.log(key, 'keyの中身')
 
       // textareaの入力箇所も取得しましょう🤗
       const value = $("#memo2").val();
-      console.log(value, 'valueの中身')
 
+      if(value == ""){
+        alert("なにか入力してください");
+      }else{
       // ローカルストレージに保存する記述をします🤗
-      localStorage.setItem(key, value)
-
-      // 画面上に表示してみましょう！
-
+      localStorage.setItem(key, value);
       const html = `
         <tr>
           <th>${key}</th>
@@ -125,52 +108,46 @@
       `
       $("#list").append(html);
       $("#memo").val("");
-
+      }
     })
 
+    //  // 1.生年月日Save クリックイベント
+     $("#birth-save").on("click", function () {
+      //入力された文字を取得したいと思います🤗
+      const key = $("#key3").text();
+      // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
+      console.log(key, 'keyの中身')
 
-  // //  1.Save クリックイベント
-  // $("#save").on("click", function () {
-  //     //入力された文字を取得したいと思います🤗
-  //     const key = $("#key1").val();
-  //     // コンソールログを使ってkeyの中身をチェックしてみましょう🤗
-  //     console.log(key, 'keyの中身')
+      // textareaの入力箇所も取得しましょう🤗
+      const value = $("#memo3").val();
 
-  //     // textareaの入力箇所も取得しましょう🤗
-  //     const value = $("#memo1").val();
-  //     console.log(value, 'valueの中身')
-
-  //     // ローカルストレージに保存する記述をします🤗
-  //     localStorage.setItem(key, value)
-
-  //     // 画面上に表示してみましょう！
-
-  //     const html = `
-  //       <tr>
-  //         <th>${key}</th>
-  //         <td>${value}</td>
-  //       </tr>
-  //     `
-  //     $("#list").append(html);
-
-  //     $("#memo").val("");
-
-  //   })
-
-
-
+      if(value == ""){
+        alert("なにか入力してください");
+      }else{
+      // ローカルストレージに保存する記述をします🤗
+      localStorage.setItem(key, value);
+      const html = `
+        <tr>
+          <th>${key}</th>
+          <td>${value}</td>
+        </tr>
+      `
+      $("#list").append(html);
+      $("#memo").val("");
+      }
+    })
     
-//2.clear クリックイベント
+
+
     //2.clear クリックイベント
     $("#clear").on('click', function () {
       localStorage.clear();
-
       $("#list").empty();
       $("#memo").val("");
       $("#memo2").val("");
     })  
 
-    //     //2.clear クリックイベント
+    //     //2.名前clear クリックイベント
         $("#clear-name").on('click', function () {
           localStorage.removeItem("名前");  
           location.reload();
@@ -178,20 +155,22 @@
       $("#memo2").val("");
     })  
 
-    //     //2.clear クリックイベント
+    //     //2.メールclear クリックイベント
     $("#clear-mail").on('click', function () {
           localStorage.removeItem("メールアドレス");  
           location.reload();
       $("#memo").val("");
       $("#memo2").val("");
-      
     })  
 
-
-
-
-
-
+        //     //2.生年月日clear クリックイベント
+        $("#birth-clear").on('click', function () {
+          localStorage.removeItem("生年月日");  
+          location.reload();
+      $("#memo").val("");
+      $("#memo2").val("");
+      $("#memo3").val("");
+    }) 
     
 
     //3.ページ読み込み：保存データ取得表示
@@ -213,3 +192,15 @@
 <footer><small>G's</small></footer>
 </body>
 </html>
+
+
+
+       <!-- 障害種別 -->
+       <!-- <div class="center">
+      <div class="centerkey">          
+      <input type="radio" name="q1" value="身体"> 身体
+      <input type="radio" name="q1" value="精神"> 精神
+      <input type="radio" name="q1" value="精神"> 発達
+      <input type="radio" name="q1" value="精神"> 知的
+      </div>
+      </div> -->

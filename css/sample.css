@@ -78,6 +78,20 @@ textarea{
     box-shadow: 3px 3px 3px 3px #555;
 }
 
+#key3{
+    margin:10px 3%;
+    width: 100px;
+    height: 25px;
+    font-size:80%;
+    background-color: #e1efff;
+    box-shadow: 3px 3px 3px 3px #555;
+}
+
+
+#memo3{
+    margin:10px 3%;
+}
+
 
 table{
     margin: 20px 3%;
@@ -99,18 +113,23 @@ td{
 
 .center{
     display: flex;
-    padding-bottom: auto;
 }
 
 .centerkey{
     padding-left: 30%;
 }
 
+.centerkey-birth{
+    padding-left: 30%;
+}
+
 
 .bottom-button{
-    width: 50%;
-    
+    padding-top: 10%;
+
     padding-left: 30%;
+    width: 50%;
+    display: flex;
 }
 
 .birth{
