@@ -2,15 +2,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>myMemoPad</title>
+<title>BizDiverse</title>
 <script src="js/jquery-2.1.3.min.js"></script>
 <link rel="stylesheet" href="css/sample.css">
 </head>
 <body>
 <header>
-<h1>情報を記入してください</h1>
 </header>
 <main>
+
+
+  <div class="enter-popup" id="popup">
+    <div class="enter-popup-overlay">
+      <div class="enter-popup-inner">
+        <div class="popup-header">
+          <div class="popup-title">情報を入力しますか？</div>
+        </div>
+        <div class="popup-btn-area">
+          <div class="radio-group">
+            <input type="radio" name="career" value="経験がある" class="career1">
+            <label class="radio-item" for="career1"><span>入力する</span></label>
+            <input type="radio" name="career" value="経験がない" class="career2">
+            <label class="radio-item" for="career2"><span>入力しない</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <h1>情報を記入してください</h1>
+
     <!-- name -->
     <div class="center">   
       <div class="centerkey">    
@@ -47,10 +69,9 @@
       </div>
       <div class="radio-ans">
       <input type="radio" id="memo4" name="c1" value="身体"> 身体
-      <input type="radio" id="memo4" name="c1" value="精神"> 精神
+      <input type="radio" id="memo4" name="c1" value="精神" checked> 精神
       <input type="radio" id="memo4" name="c1" value="発達"> 発達
       <input type="radio" id="memo4" name="c1" value="知的"> 知的
-      <input type="radio" id="memo4" name="c1" value="その他" checked> その他
       </div>
       </div>
   
@@ -78,6 +99,36 @@
 </table>
 <script>
 
+//ログインステイタス
+
+
+
+  //ボタンクリック時
+  $(".career1").on('click', function() {
+    $(".enter-popup-inner").css({
+      "left" :"-50%"
+     });
+    $(".enter-popup").hide();
+  })
+
+
+  $(".career2").on('click', function() {
+    alert("ジーズアカデミーのサイトへ飛びます");
+    window.location.href = "https://gsacademy.jp/";
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  // 1.ALLSave クリックイベント
  $("#save").on("click", function () {
@@ -91,7 +142,11 @@
       console.log(value, 'valueの中身');
       // ローカルストレージに保存する記述をします🤗
       
+      if(value == ""){
+        alert(key+"を入力してください");
+      }else{
       localStorage.setItem(key, value);
+      }
     }
 
     const key = $("#key4").text();
