@@ -59,7 +59,7 @@
 
         <li id="save">All Save</li>
         <li id="name-save">Name Save</li>
-        <!-- <li id="clear-name">Name Delete</li> -->
+        <li id="clear-name">Name Delete</li>
         <li id="mail-save">Mail Save</li>
         <!-- <li id="clear-mail">Mail Delete</li> -->
         <li id="birth-save">Birth Save</li>
@@ -130,9 +130,9 @@
       // textareaの入力箇所も取得しましょう🤗
 
       const value = $("#memo1").val();
-      // if(value == ""){
-      //   alert("なにか入力してください");
-      // }else{
+      if(value == ""){
+        alert("名前を入力してください");
+      }else{
       // ローカルストレージに保存する記述をします🤗
       localStorage.setItem(key, value);
 
@@ -145,7 +145,7 @@
       `
       $("#list").replaceWith(html);
       $("#memo").val("");
-      // }
+       }
     })
 
 
