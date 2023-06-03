@@ -11,30 +11,14 @@
 </header>
 <main>
 
-<!-- 
-  <div class="enter-popup" id="popup">
-    <div class="enter-popup-overlay">
-      <div class="enter-popup-inner">
-        <div class="popup-header">
-          <div class="popup-title">情報を入力しますか？</div>
-        </div>
-        <div class="popup-btn-area">
-          <div class="radio-group">
-            <input type="radio" name="career" value="経験がある" class="career1">
-            <label class="radio-item" for="career1"><span>入力する</span></label>
-            <input type="radio" name="career" value="経験がない" class="career2">
-            <label class="radio-item" for="career2"><span>入力しない</span></label>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
+
+ 
 
 
 
   
 
-  <h1>情報を記入してください</h1>
+  <h1 id="first">情報を記入してください</h1>
 
     <!-- name -->
     <div class="center">   
@@ -106,33 +90,7 @@
 
 
 
-  //ボタンクリック時
-  $(".career1").on('click', function() {
-    $(".enter-popup-inner").css({
-      "left" :"-50%"
-     });
-    $(".enter-popup").hide();
-  })
-
-
-  $(".career2").on('click', function() {
-    alert("ジーズアカデミーのサイトへ飛びます");
-    window.location.href = "https://gsacademy.jp/";
-  })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
  // 1.ALLSave クリックイベント
  $("#save").on("click", function () {
 
@@ -161,7 +119,6 @@
       // ローカルストレージに保存する記述をします🤗
 
       localStorage.setItem(key, value);
-      
       location.reload();
 
       const html = `
@@ -293,16 +250,6 @@
       $("#memo").val("");
       }
     })
-
-
-
-
-
-
-
-
-
-
 
 
     //2.clear クリックイベント

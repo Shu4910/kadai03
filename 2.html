@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="stylesheet" href="css/sample.css">
+
+    <title>Document</title>
+</head>
+<body>
+     <div class="enter-popup" id="popup">
+    <div class="enter-popup-overlay">
+      <div class="enter-popup-inner">
+        <div class="popup-header">
+          <div class="popup-title">情報を入力しますか？</div>
+        </div>
+        <div class="popup-btn-area">
+          <div class="radio-group">
+            <input type="radio" name="career" value="経験がある">
+            <label class="radio-item" for="career1">
+              <span class="career1">入力する</span></label>
+
+            <input type="radio" name="career" value="経験がない">
+            <label class="radio-item" for="career2">
+              <span class="career2">入力しない</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+  //ボタンクリック時
+  $(".career1").on('click', function() {
+    $(".enter-popup-inner").css({
+      "left" :"-50%"
+     });
+    $("#first").show();
+    $(".enter-popup").hide();
+    window.location.href = "memopad.html";
+
+  })
+
+
+  $(".career2").on('click', function() {
+    alert("入力してください！！");
+  })
+</script>
+
+</body>
+</html>
